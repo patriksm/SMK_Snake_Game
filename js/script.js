@@ -19,6 +19,8 @@ snake[0] = {
     y:10*box
 }
 
+let dir = "down";
+
 function drawGame() {
     ctx.drawImage(ground, 0, 0);
     ctx.drawImage(foodImg, food.x, food.y);
@@ -34,7 +36,18 @@ function drawGame() {
 
     snake.pop();
 
-    snakeX += box;
+    if (dir == "right") {
+        snakeX += box;
+    }
+    if (dir == "left") {
+        snakeX -= box;
+    }
+    if (dir == "up") {
+        snakeY -= box;
+    }
+    if (dir == "down") {
+        snakeY += box;
+    }
 
     let newHead = {
         x: snakeX,
