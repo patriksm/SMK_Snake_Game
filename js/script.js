@@ -23,8 +23,25 @@ function drawGame() {
     ctx.drawImage(ground, 0, 0);
     ctx.drawImage(foodImg, food.x, food.y);
 
-    ctx.fillStyle = "green";
-    ctx.fillRect(snake[0].x, snake[0].y, box, box);
+    for(let i = 0; i < snake.length; i++){
+        ctx.fillStyle = "green";
+        ctx.fillRect(snake[i].x, snake[i].y, box, box);
+    }
+    
+
+    let snakeX = snake[0].x;
+    let snakeY = snake[0].y;
+
+    snake.pop();
+
+    snakeX += box;
+
+    let newHead = {
+        x: snakeX,
+        y: snakeY
+    }
+
+    snake.unshift(newHead);
 }
 
-let game = setInterval(drawGame, 10);
+let game = setInterval(drawGame, 100);
